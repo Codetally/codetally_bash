@@ -1,0 +1,86 @@
+body {
+  font-family: 'PT Sans';
+font-size:16px;
+padding-top:70px;
+
+}
+.color-excel {
+	font-size:48px;
+	color:green;
+}
+.color-pdf {
+	font-size:48px;
+	color:red;
+}
+.color-word {
+	font-size:48px;
+	color:royalblue;
+}
+.color-code {
+	font-size:48px;
+	color:brown;
+}
+.color-image {
+	font-size:48px;
+	color:purple;
+}
+.footer {
+  background-color: #fff;
+  color:#222;
+}
+
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #ffffff;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+  white-space: nowrap;
+
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+/*
+.highlight { background-color:#282c34; color:#abb2bf; font-size:12pt;}
+.string { color: #98c379; }
+.number { color: #d19a66; }
+.boolean { color: #56b6c2; }
+.null { color: #56b6c2; }
+.key { color: #d19a66; }
+*/
+
+.highlight { background-color:#001b33; color:#ffffff; font-size:12pt;}
+.string { color: #3ad900; }
+.number { color: #d19a66; }
+.boolean { color: #56b6c2; }
+.null { color: #56b6c2; }
+.key { color: #ffee80; }
+
+

@@ -1,0 +1,56 @@
+<h1>{{username}} | {{repo}} <img src="{{username}}/{{repo}}/shield.svg"></h1>
+<p>{{item.description}}</p>
+<hr>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" ng-class="{active: action=='log' || action ==null || action == 'config'}"><a href="#/{{username}}/{{repo}}/">Current</a></li>
+  <li role="presentation" ng-class="{active: action=='history'}"><a href="#/{{username}}/{{repo}}/history">History</a></li>
+</ul>
+<br >
+<div class="panel panel-default" style="border-left:15px solid green" ng-hide="action=='history'">
+	<div class="panel-body">
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-6"><i class="fa fa-sticky-note text-muted"></i> {{item.message}}</div>
+				<div class="col-md-6"><i class="fa fa-check-circle text-muted"></i> Calculation Complete: {{item.calculation_result}}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6"><i class="fa fa-github text-muted"></i> <a href="{{item.commit_url}}">Commit {{item.commit_id | limitTo: 9}}</a></div>
+				<div class="col-md-6"><i class="fa fa-calculator text-muted"></i> Calculation took {{item.elapsed_time }} seconds</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6"><i class="fa fa-github text-muted"></i> <a href="{{item.html_url}}">Repository</a></div>
+				<div class="col-md-6"><i class="fa fa-calendar text-muted"></i> {{item.calculation_date | date}}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6"><i class="fa fa-users text-muted"></i> Committed by {{item.committer_name}}.</div>
+				<div class="col-md-6"><i class="fa fa-shield text-muted"></i> <img src="{{username}}/{{repo}}/shield.svg"></div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 style="margin-top:0px;">{{(item.calculation_value || "0") | currency:item.calculation_unit}} <small>({{item.calculation_currency}})</small></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<ul class="nav nav-tabs" ng-hide="action=='history'">
+  <li role="presentation" ng-class="{active: action=='log' || action==null }"><a href="#/{{username}}/{{repo}}/log">Calculation Log</a></li>
+  <li role="presentation" ng-class="{active: action=='config'}"><a href="#/{{username}}/{{repo}}/config">Config</a></li>
+</ul>
+
+<div ng-switch="action">
+       <div ng-switch-when="undefined"><div ng-include="'log.html'"></div>
+        </div>
+       <div ng-switch-when="log"><div ng-include="'log.html'"></div>
+        </div>
+        <div ng-switch-when="config"><div ng-include="'config.html'"></div>
+       	</div>
+        <div ng-switch-when="history"><div ng-include="'history.html'"></div>
+	</div>
+
+</div>
+
